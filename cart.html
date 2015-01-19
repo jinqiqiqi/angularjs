@@ -1,0 +1,20 @@
+<!doctype html>
+<html ng-app="cartApp">
+	<head>
+		<link rel="stylesheet" type="text/css" href="styles/todo.css">
+	</head>
+	<body ng-controller="cartController">
+		<h2>Cart</h2>
+
+		<div ng-repeat="item in items">
+			<span>{{item.title}}</span>
+			<input type="text" ng-model="item.quantity">
+			<span>{{item.price| currency}}</span>
+			<span>{{item.price* item.quantity | currency}}</span>
+			<button ng-click="remove($index);">Remove</button>
+		</div>
+
+		<script src="./scripts/angular/angular.min.js"></script>
+		<script src="./scripts/cart.js"></script>
+	</body>
+</html>
