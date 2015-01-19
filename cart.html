@@ -12,7 +12,15 @@
 			<span>{{item.price| currency}}</span>
 			<span>{{item.price* item.quantity | currency}}</span>
 			<button ng-click="remove($index);">Remove</button>
+
 		</div>
+
+		<div ng-controller="tController">
+			S: <span ng-bind="t_name"></span><br />
+			S: <span>{{t_name}}</span><br />
+			<input type="text" ng-model="t_name" />
+		</div>
+
 
 		<script src="./scripts/angular/angular.min.js"></script>
 		<script src="./scripts/cart.js"></script>
