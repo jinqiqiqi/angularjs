@@ -2,21 +2,37 @@
 <html ng-app="cartApp">
 	<head>
 		<link rel="stylesheet" type="text/css" href="styles/todo.css">
+		<style>
+		.selected {
+			background: yellow;
+		}
+		</style>
 	</head>
 	<body ng-controller="cartController">
 		<h2>Cart</h2>
 
-		<div ng-repeat="item in items">
-			{{$index+1}}, 
-			{{$first}}, {{$middle}}, {{$last}}
-			<span>{{item.title}}</span>
-			<input type="text" ng-model="item.quantity">
-			<span>{{item.price| currency}}</span>
-			<span>{{item.price* item.quantity | currency}}</span>
-			<button ng-click="remove($index);">Remove</button>
-
-		</div>
+		
+	
+		<table border="1" width="80%">
+			<tr>
+				<th>Index</th>
+				<th>Name</th>
+				<th>Price</th>
+				<th>Number</th>
+				<th>Total</th>
+				<th>Action</th>
+			</tr>
+			<tr ng-repeat="item in items" ng-mouseover="setCurrentRow($index)" ng-class="{selected: $index == currentRow}">
+				<td>{{$index+1}}</td>
+				<td>{{item.title}}</td>
+				<td>{{item.price| currency}}</td>
+				<td><input type="text" ng-model="item.quantity"></td>
+				<td>{{item.price* item.quantity | currency}}</td>
+				<td><button ng-click="remove($index);">Remove</button></td>
+			</tr>
+		</table>
 		<button ng-click="add();">Add more...</button>
+
 
 		<div ng-controller="tController">
 			<button ng-click="toggleMenu()">Show/hide</button>
