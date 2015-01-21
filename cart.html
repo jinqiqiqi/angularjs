@@ -7,6 +7,8 @@
 		<h2>Cart</h2>
 
 		<div ng-repeat="item in items">
+			{{$index+1}}, 
+			{{$first}}, {{$middle}}, {{$last}}
 			<span>{{item.title}}</span>
 			<input type="text" ng-model="item.quantity">
 			<span>{{item.price| currency}}</span>
@@ -14,11 +16,15 @@
 			<button ng-click="remove($index);">Remove</button>
 
 		</div>
+		<button ng-click="add();">Add more...</button>
 
 		<div ng-controller="tController">
-			S: <span ng-bind="t_name"></span><br />
-			S: <span>{{t_name}}</span><br />
-			<input type="text" ng-model="t_name" />
+			<button ng-click="toggleMenu()">Show/hide</button>
+			<div ng-show="menuState">
+				S: <span ng-bind="t_name"></span><br />
+				S: <span>{{t_name}}</span><br />
+				<input type="text" ng-model="t_name" />
+			</div>
 		</div>
 
 
