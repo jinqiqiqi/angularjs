@@ -9,6 +9,27 @@ cartApp.controller('cartController', ['$scope', function ($scope) {
 	
 	$scope.items = items;
 	$scope.currentRow = null;
+	$scope.bill = {'total': 0, 'discount': 0};
+
+	function totalCart () {
+		var sum = 0;
+		for (i in $scope.items) {
+			var item = $scope.items[i];
+			sum += item.price * item.quantity;
+		}
+		$scope.bill.total = sum;
+		$scope.bill.discount = 0;
+		if($scope.bill.total > 100) {
+			$scope.bill.discount = 0.1;
+		}
+
+		$scope.bill.sub = $scope.bill.total * (1 - $scope.bill.discount);
+	}
+
+
+	$scope.$watch('items', totalCart, true);
+
+
 	$scope.remove = function(index){
 		$scope.items.splice(index, 1);
 	}

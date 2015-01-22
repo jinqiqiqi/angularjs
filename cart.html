@@ -1,6 +1,7 @@
 <!doctype html>
 <html ng-app="cartApp">
 	<head>
+		<meta http-equiv="content-type" content="text/html;charset=utf-8">
 		<link rel="stylesheet" type="text/css" href="styles/todo.css">
 		<style>
 		.selected {
@@ -31,18 +32,11 @@
 				<td><button ng-click="remove($index);">Remove</button></td>
 			</tr>
 		</table>
+		<div>Total: {{bill.total}}</div>
+		<div>Discount: {{100* (1-bill.discount)}}%</div>
+		<div>Sub Total: {{bill.sub}}</div>
 		<button ng-click="add();">Add more...</button>
 
-
-		<div ng-controller="tController">
-			<button ng-click="toggleMenu()">Show/hide</button>
-			<div ng-show="menuState">
-				S: <span ng-bind="t_name"></span><br />
-				S: <span>{{t_name}}</span><br />
-				<input type="text" ng-model="t_name" />
-			</div>
-		</div>
-        test
 
 
 		<script src="./scripts/angular/angular.min.js"></script>
