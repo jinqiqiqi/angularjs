@@ -13,6 +13,16 @@
 <body>
 
 	<div>
+		-- ng-selected  <br />
+		<label>Select Two Fish: </label>
+		<input type="checkbox" ng-model="isTwoFish" />
+		<select name="" id="">
+			<option value="">One Fish</option>
+			<option value="" ng-selected="isTwoFish">Two Fish</option>
+		</select>
+	</div>
+
+	<div>
 		-- ng-checked  <br />
 		<label>checkProperty = {{ checkProperty }}</label>
 		<input type="checkbox" ng-checked="checkProperty" ng-init="checkProperty=true" ng-model="checkProperty" />
