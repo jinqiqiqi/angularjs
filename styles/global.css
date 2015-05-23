@@ -30,6 +30,6 @@ input.ng-invalid {
 input.ng-valid {
 	border: 3px solid green;
 }
-.err {
+.err, .red {
 	color: red;
 }

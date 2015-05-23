@@ -101,13 +101,30 @@
 				$scope.people.push({ name: $scope.person.name });
 				$scope.person.name = "";
 			}
-		}
+		};
 	}]);
+	
+	app.controller('LotteryController', function($scope){
+		$scope.generateNumber = function() {
+			return Math.floor((Math.random()* 10) +1);
+		};
+	});
 
 	</script>
 
 </head>
 <body ng-controller="MyController">
+
+	<div ng-controller="LotteryController">
+		<h1>ng-class</h1>
+		<div ng-class="{red:" x="5}" ng-if="x>5">
+			You won!
+		</div>
+		<button ng-click="x=generateNumber()" ng-init="x=0">
+			Draw Number
+		</button>
+		<p>Number is: {{ x }}</p>
+	</div>
 
 	<div>
 		<h1>ng-submit</h1>
