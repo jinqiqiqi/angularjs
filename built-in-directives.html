@@ -41,7 +41,12 @@
 		}
 	});
 	app.controller('MyController', ['$scope', '$filter', function($scope, $filter){
-
+		$scope.h4text = {
+			text: "h4 text is here."
+		};
+		$scope.changeh4 = function() {
+			$scope.h4text.text = "clicked."
+		}
 	}]);
 
 	</script>
@@ -50,12 +55,18 @@
 <body ng-controller="MyController">
 
 	<div>
+		<h1> ng-controller:   </h1>
+		<h4>{{ h4text.text }}</h4>
+		<button ng-click="changeh4()">changeh4()</button>
+	</div>
+
+	<div>
 		<h1> ng-app:   </h1>
 		<h4>{{ rootProperty }}</h4>
 		<button ng-click="rootClick()">rootClick</button>
 	</div>
-	
-	
+
+
 	<div>
 		<h1> ng-src:   </h1>
 		<div>Wrong Way</div>
