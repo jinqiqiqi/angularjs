@@ -65,10 +65,30 @@
 		];
 	}]);
 
+	app.controller('EquationController', ['$scope', function($scope){
+		$scope.equation = {};
+		$scope.changeEquation = function() {
+			$scope.equation.output = parseInt($scope.equation.x) + 2;
+		}
+	}])
+
 	</script>
 
 </head>
 <body ng-controller="MyController">
+
+	<div ng-controller="EquationController">
+		<input type="text" ng-model="equation.x" ng-change="changeEquation();" />
+		<code>{{ equation.output }}</code>
+	</div>
+
+	<div>
+		<h1> ng-init:   </h1>
+		<div ng-init="greeting='hello'; person='Kinch';">
+			{{ greeting }} {{ person }}<br />
+			<span ng-bind-template="{{ greeting }} {{ person }}"></span>
+		</div>
+	</div>
 
 	<div>
 		<h1> ng-repeat:   </h1>
