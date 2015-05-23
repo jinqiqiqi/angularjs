@@ -48,15 +48,17 @@
 			$scope.h4text.text = "clicked."
 		}
 
-		$scope.someBareValue = "hello computer";
+		$scope.someBareValue = {
+			text:"hello computer"
+		};
 		$scope.someBareAction = function() {
-			$scope.someBareValue = "hello computer, from parent.";
+			$scope.someBareValue.text = "hello computer, from parent.";
 		};
 	}]);
 
 	app.controller('ChildController', ['$scope', function($scope){
 		$scope.someBareChildAction = function() {
-			$scope.someBareValue = "hello computer, from child.";
+			$scope.someBareValue.text = "hello computer, from child.";
 		}
 	}]);
 
@@ -66,11 +68,11 @@
 <body ng-controller="MyController">
 	
 	<div>
-			{{ someBareValue }}
+			{{ someBareValue.text }}
 			<button ng-click="someBareAction()">someBareAction()</button>
 		<div ng-controller="ChildController">
 			<h1> parent - child controllers:   </h1>
-			{{ someBareValue }}
+			{{ someBareValue.text }}
 			<button ng-click="someBareChildAction()">someBareChildAction()</button>
 		</div>
 	</div>
