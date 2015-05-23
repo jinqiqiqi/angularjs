@@ -33,6 +33,12 @@
 		$timeout(function(){
 			$rootScope.imgSrc="http://book/assets/image/icons/report_link.png";
 		}, 5000);
+
+		// ng-app
+		$rootScope.rootProperty = "hi root scope";
+		$rootScope.rootClick = function() {
+			$rootScope.rootProperty = "hi root Click is triggerign.";
+		}
 	});
 	app.controller('MyController', ['$scope', '$filter', function($scope, $filter){
 
@@ -44,10 +50,16 @@
 <body ng-controller="MyController">
 
 	<div>
+		<h1> ng-app:   </h1>
+		<h4>{{ rootProperty }}</h4>
+		<button ng-click="rootClick()">rootClick</button>
+	</div>
+	
+	
+	<div>
 		<h1> ng-src:   </h1>
 		<div>Wrong Way</div>
-		<img src="{{ imgSrc }}" alt="wrong">
-
+		<!-- <img src="{{ imgSrc }}" alt="wrong"> -->
 		<div>Right Way</div>
 		<img ng-src="{{ imgSrc }}" alt="right">
 	</div>
