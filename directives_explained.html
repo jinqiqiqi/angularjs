@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+<meta id="viewport" name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0,user-scalable=no" />
+<meta content="yes" name="apple-mobile-web-app-capable" />
+	<script src="./scripts/angular/angular.min.js"></script>
+	<link rel="stylesheet" href="./styles/global.css">
+
+	<script>
+	var app = angular.module("myApp", []);
+	app.run(function($rootScope, $timeout) {
+		
+	});
+	app.controller('MyController', ['$scope', '$filter', function($scope, $filter){
+	
+	}]);
+
+	
+
+	</script>
+
+</head>
+<body ng-controller="MyController">
+
+	<div ng-app="myApp" ng-init="someProperty='some data'"></div>
+	<div ng-init="siblingProperty='more data'">
+		Inside div Tow
+		<div ng-init="aThirdProperty"></div>
+	</div>
+	
+	<div>
+		<h1> enable button after property is not false</h1>
+		<input type="text" ng-model="someProperty" placeholder="Type to Enable">
+		<button ng-model="button" ng-disabled="!someProperty">A Button</button>
+	</div>
+
+</body>
+</html>
