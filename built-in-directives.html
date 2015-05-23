@@ -91,12 +91,36 @@
 			{name: "New York"},
 			{name: "Boston"},
 		];
-	}])
+	}]);
+
+	app.controller('SubmitFormController', ['$scope', function($scope){
+		$scope.person = { name: null };
+		$scope.people = [];
+		$scope.submit = function() {
+			if($scope.person.name) {
+				$scope.people.push({ name: $scope.person.name });
+				$scope.person.name = "";
+			}
+		}
+	}]);
 
 	</script>
 
 </head>
 <body ng-controller="MyController">
+
+	<div>
+		<h1>ng-submit</h1>
+		<form ng-submit="submit()" ng-controller="SubmitFormController">
+			Enter text and hit enter: <br >
+			<input type="text" ng-model="person.name" name="person.name">
+			<input type="submit" value="Submit" name="person.name">
+			<code>people = {{ people }}</code>
+			<ul ng-repeat="(index, object) in people">
+				<li>{{ object.name }}</li>
+			</ul>
+		</form>
+	</div>
 
 	<div ng-controller="CityController">
 		<h1>ng-select</h1>
