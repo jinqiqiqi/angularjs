@@ -55,7 +55,7 @@
 	}]);
 
 	app.controller('PeopleController', ['$scope', function($scope){
-		
+
 		$scope.people = [
 			{name: "Kinch", city: "Soochow"},
 			{name: "Kinch1", city: "Soochow1"},
@@ -70,14 +70,43 @@
 		$scope.changeEquation = function() {
 			$scope.equation.output = parseInt($scope.equation.x) + 2;
 		}
-	}])
+	}]);
+
+	app.controller('FormController', ['$scope', function($scope){
+		$scope.fields = [
+			{name: "username", placeholder: "Username", isRequired: true},
+			{name: "password", placeholder: "Password", isRequired: true},
+			{name: "email", placeholder: "Email (optional)", isRequired: false}
+		];
+		$scope.submitForm = function() {
+			alert("it works.");
+		}
+	}]);
 
 	</script>
 
 </head>
 <body ng-controller="MyController">
 
+	<div>
+	<h1>ng-form</h1>
+	<form name="signup_form" ng-controller="FormController" ng-submit="submitForm()" novalidate>
+		<div ng-repeat="field in fields" ng-form="signup_form_input">
+			<input type="text" name="{{ field.name }}" ng-required="field.isRequired" ng-model="field.value" placeholder="{{ field.placeholder }}" />
+			<div ng-show="signup_form_input.dynamic_input.$dirty && signup_form_input.dynamic_input.$invalid">
+				<span class="err" ng-show="signup_form_input.dynamic_input.$error.required">
+					The field is required.
+				</span>
+			</div>
+		</div>
+		<button type="submit" ng-disabled="signup_form.$invalid">
+			Submit All
+		</button>
+	</form>
+	</div>
+
 	<div ng-controller="EquationController">
+		<h1>ng-change</h1>
 		<input type="text" ng-model="equation.x" ng-change="changeEquation();" />
 		<code>{{ equation.output }}</code>
 	</div>
@@ -124,7 +153,7 @@
 		<div ng-include="templates/myTemplatengInclude.html">
 		</div>
 	</div>
-	
+
 	<div>
 		{{ someBareValue.text }}
 		<button ng-click="someBareAction()">someBareAction()</button>
