@@ -30,7 +30,9 @@
 		<hr />
 		<h1>Hello {{ yourName | uppercase }}</h1>
 		<h1>Hello {{ ['Ari', 'Lerner', 'Likes' ] | filter:'es' }}</h1>
-		<div my-dir>testing</div>
+
+		<input type="text" ng-model="theirUrl"/>
+		<div my-dir kinch-url="theirUrl" my-link-text="click to open the book">testing</div>
 		<!-- directive: my-dir -->
 		<div ng-init="greeting='kinch'">{{ greeting }}</div>
 	</div>
@@ -50,7 +52,11 @@
 		return {
 			restrict: 'AM',
 			replace: true,
-			template: '<a href="http://book/" target="_blank">baidu.com</a>'
+			scope: {
+				myUrl: '=kinchUrl',
+				myLinkText: '@'
+			},
+			template: '<a href="{{ myUrl }}" title="{{ myUrl }}" target="_blank">[{{ myLinkText }} - {{ myUrl }}]</a>'
 		};
 	});
 
