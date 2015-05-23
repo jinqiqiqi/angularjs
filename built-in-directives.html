@@ -47,12 +47,33 @@
 		$scope.changeh4 = function() {
 			$scope.h4text.text = "clicked."
 		}
+
+		$scope.someBareValue = "hello computer";
+		$scope.someBareAction = function() {
+			$scope.someBareValue = "hello computer, from parent.";
+		};
+	}]);
+
+	app.controller('ChildController', ['$scope', function($scope){
+		$scope.someBareChildAction = function() {
+			$scope.someBareValue = "hello computer, from child.";
+		}
 	}]);
 
 	</script>
 
 </head>
 <body ng-controller="MyController">
+	
+	<div>
+			{{ someBareValue }}
+			<button ng-click="someBareAction()">someBareAction()</button>
+		<div ng-controller="ChildController">
+			<h1> parent - child controllers:   </h1>
+			{{ someBareValue }}
+			<button ng-click="someBareChildAction()">someBareChildAction()</button>
+		</div>
+	</div>
 
 	<div>
 		<h1> ng-controller:   </h1>
