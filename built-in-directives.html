@@ -2,8 +2,21 @@
 <html ng-app="myApp">
 <head>
 	<script src="./scripts/angular/angular.min.js"></script>
+	<style>
+	div {
+		margin: 0 0 30px 0;
+		padding: 10px;
+		outline: 3px solid #DDD;
+	}
+	</style>
 </head>
 <body>
+
+	<div>
+		-- ng-checked  <br />
+		<label>checkProperty = {{ checkProperty }}</label>
+		<input type="checkbox" ng-checked="checkProperty" ng-init="checkProperty=true" ng-model="checkProperty" />
+	</div>
 
 	<div>
 		-- read only (ng-readonly) <br />
