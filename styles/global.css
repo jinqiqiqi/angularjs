@@ -16,3 +16,10 @@ input, button {
 input[type=checkbox] {
 	display: inline;
 }
+
+.odd {
+	background: rgb(156, 156, 218);
+}
+.even {
+	background: rgb(215, 160, 160);
+}
