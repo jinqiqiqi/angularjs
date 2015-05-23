@@ -7,3 +7,12 @@ div {
 h1 {
 	font-size: 18px;
 }
+
+input, button {
+	display: block;
+	margin: 10px;
+}
+
+input[type=checkbox] {
+	display: inline;
+}
