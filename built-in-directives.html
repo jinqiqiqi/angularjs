@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+	<script src="./scripts/angular/angular.min.js"></script>
+</head>
+<body>
+
+	
+	<div>
+		<textarea ng-disabled="isDisabled" name="" id="" cols="30" rows="10" ng-model="hintText"></textarea>
+	</div>
+
+	<div>
+		-- enable button after property is not false<br />
+		<input type="text" ng-model="someProperty" placeholder="Type to Enable">
+		<button ng-model="button" ng-disabled="!someProperty">A Button</button>
+	</div>
+
+	<script>
+	var app = angular.module("myApp", []);
+	app.run(function($rootScope, $timeout) {
+		$rootScope.isDisabled = true;
+		$rootScope.hintText = "Wait for 5 seconds";
+		$timeout(function(){
+			$rootScope.isDisabled = false;
+		$rootScope.hintText = "Please write now.";
+		}, 5000);
+	});
+	app.controller('MyController', ['$scope', '$filter', function($scope, $filter){
+
+	}]);
+	
+	</script>
+</body>
+</html>
