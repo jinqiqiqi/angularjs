@@ -83,10 +83,28 @@
 		}
 	}]);
 
+	app.controller('CityController', ['$scope', function($scope){
+		$scope.cities = [
+			{name: "Seattle"},
+			{name: "San Francisco"},
+			{name: "Chicago"},
+			{name: "New York"},
+			{name: "Boston"},
+		];
+	}])
+
 	</script>
 
 </head>
 <body ng-controller="MyController">
+
+	<div ng-controller="CityController">
+		<h1>ng-select</h1>
+		<select ng-model="city" ng-options="city.name for city in cities">
+			<option value="">Choose City</option>
+		</select>
+		Best City: {{ city.name }}
+	</div>
 
 	<div>
 	<h1>ng-form</h1>
