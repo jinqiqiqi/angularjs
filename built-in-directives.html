@@ -8,42 +8,11 @@
 		padding: 10px;
 		outline: 3px solid #DDD;
 	}
+
+	h1 {
+		font-size: 18px;
+	}
 	</style>
-</head>
-<body>
-
-	<div>
-		-- ng-selected  <br />
-		<label>Select Two Fish: </label>
-		<input type="checkbox" ng-model="isTwoFish" />
-		<select name="" id="">
-			<option value="">One Fish</option>
-			<option value="" ng-selected="isTwoFish">Two Fish</option>
-		</select>
-	</div>
-
-	<div>
-		-- ng-checked  <br />
-		<label>checkProperty = {{ checkProperty }}</label>
-		<input type="checkbox" ng-checked="checkProperty" ng-init="checkProperty=true" ng-model="checkProperty" />
-	</div>
-
-	<div>
-		-- read only (ng-readonly) <br />
-		<input type="text" ng-model="someProperty1" placeholder="Type to Enable">
-		<input ng-readonly="!someProperty1" value="Text in readonly input " />
-	</div>
-	
-	<div>
-		-- enable textarea after 5 seconds<br />
-		<textarea ng-disabled="isDisabled" name="" id="" cols="30" rows="10" ng-model="hintText"></textarea>
-	</div>
-
-	<div>
-		-- enable button after property is not false<br />
-		<input type="text" ng-model="someProperty" placeholder="Type to Enable">
-		<button ng-model="button" ng-disabled="!someProperty">A Button</button>
-	</div>
 
 	<script>
 	var app = angular.module("myApp", []);
@@ -54,11 +23,75 @@
 			$rootScope.isDisabled = false;
 		$rootScope.hintText = "Please write";
 		}, 5000);
+
+		// for ng-href
+		$timeout(function() {
+			$rootScope.myHref = "http://book/";
+		}, 5000);
+
+		// for ng-src
+		$timeout(function(){
+			$rootScope.imgSrc="http://book/assets/image/icons/report_link.png";
+		}, 5000);
 	});
 	app.controller('MyController', ['$scope', '$filter', function($scope, $filter){
 
 	}]);
-	
+
 	</script>
+
+</head>
+<body ng-controller="MyController">
+
+	<div>
+		<h1> ng-src:   </h1>
+		<div>Wrong Way</div>
+		<img src="{{ imgSrc }}" alt="wrong">
+
+		<div>Right Way</div>
+		<img ng-src="{{ imgSrc }}" alt="right">
+	</div>
+
+
+	<div>
+		<h1> ng-href  </h1>
+		link 1: <a href="{{ myHref }}"> link text1 {{ myHref }}</a><br />
+		link 2: <a ng-href="{{ myHref }}">link text2 {{ myHref }}</a>
+	</div>
+
+
+	<div>
+		<h1> ng-selected  </h1>
+		<label>Select Two Fish: </label>
+		<input type="checkbox" ng-model="isTwoFish" />
+		<select name="" id="">
+			<option value="">One Fish</option>
+			<option value="" ng-selected="isTwoFish">Two Fish</option>
+		</select>
+	</div>
+
+	<div>
+		<h1> ng-checked  </h1>
+		<label>checkProperty = {{ checkProperty }}</label>
+		<input type="checkbox" ng-checked="checkProperty" ng-init="checkProperty=true" ng-model="checkProperty" />
+	</div>
+
+	<div>
+		<h1> read only (ng-readonly) </h1>
+		<input type="text" ng-model="someProperty1" placeholder="Type to Enable">
+		<input ng-readonly="!someProperty1" value="Text in readonly input " />
+	</div>
+
+	<div>
+		<h1> enable textarea after 5 seconds</h1>
+		<textarea ng-disabled="isDisabled" name="" id="" cols="30" rows="10" ng-model="hintText"></textarea>
+	</div>
+
+	<div>
+		<h1> enable button after property is not false</h1>
+		<input type="text" ng-model="someProperty" placeholder="Type to Enable">
+		<button ng-model="button" ng-disabled="!someProperty">A Button</button>
+	</div>
+
 </body>
 </html>
