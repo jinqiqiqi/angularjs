@@ -15,23 +15,51 @@
 	
 	}]);
 
-	
+	app.controller('SomeController', function($scope){
+		
+	});
+	app.controller('MainController', ['$scope', function($scope){
+		
+	}])
+	.directive('myDirective', function() {
+		return {
+			restrict: 'A',
+			// scope: {},
+			// scope: true,
+			priority: 100,
+			template: '<div>Inside MyDirective "{{ myProperty }}".</div>'
+		};
+	});
 
 	</script>
 
 </head>
-<body ng-controller="MyController">
+<body>
 
-	<div ng-app="myApp" ng-init="someProperty='some data'"></div>
-	<div ng-init="siblingProperty='more data'">
-		Inside div Tow
-		<div ng-init="aThirdProperty"></div>
+	
+	<div ng-controller="MainController">
+		<h1>隔离作用域</h1>
+		Outside myDirective: {{ myProperty }}
+		<div my-directive ng-init="myProperty='wow, this is cool'">
+			Inside myDirective: {{ myProperty }}
+		</div>
 	</div>
+
 	
 	<div>
-		<h1> enable button after property is not false</h1>
-		<input type="text" ng-model="someProperty" placeholder="Type to Enable">
-		<button ng-model="button" ng-disabled="!someProperty">A Button</button>
+		<h1>Scope (boolean): true / false </h1>
+		
+		<div ng-init="someProperty='some data'">
+			<div ng-init="siblingProperty='more data in sibling element'">
+				Inside Div Two: {{ aThirdProperty }}
+				<div ng-init="aThirdProperty='data for 3rd property'" ng-controller="SomeController">
+					Inside Div Three: {{ aThirdProperty }}
+					<div ng-init="aThirdProperty">
+						Inside Div four: {{ aThirdProperty }}
+					</div>
+				</div>
+			</div>
+		</div>
 	</div>
 
 </body>
