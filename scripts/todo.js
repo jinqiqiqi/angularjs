@@ -1,10 +1,23 @@
 angular.module('todoApp', [])
-	.controller('TodoController', ['$scope', function ($scope) {
+	.factory('todoService', ['$http', function($http){
+		var runRequest = function(path) {
+			return $http({
+				method: "get",
+				url: path
+			});
+		}
+		return {
+			events: function(path) {
+				return runRequest(path);
+			}
+		};
+	}])
+	.controller('TodoController', ['$scope', 'todoService', function ($scope, todoService) {
 		
-		$scope.todos = [
-			{id: 1, text: 'learn angular', done: true},
-			{id: 2, text: 'build an angular app', done: false}
-		];
+		var todoUrl = "/test/angularjs/todo.json";
+		todoService.events(todoUrl).success(function(data, status) {
+			$scope.todos = data;
+		});
 
 		$scope.addTodo = function(){
 			$scope.todos.push({text: $scope.todoText, done:false});
@@ -27,8 +40,23 @@ angular.module('todoApp', [])
 					$scope.todos.push(todo);
 				}
 			});
+		};
+
+		$scope.warningLevel = function() {
+			return $scope.remaining() < 3? "label-success": "label-warning";
 		}
 
 
 
-	}]);
+	}])
+	.filter("checkedItems", function() {
+		return function(items, showComplete) {
+			var resultArr = [];
+			angular.forEach(items, function(item){
+				if(item.done == false || showComplete == true) {
+					resultArr.push(item);
+				}
+			});
+			return resultArr;
+		};
+	});
