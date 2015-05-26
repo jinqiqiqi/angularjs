@@ -1,0 +1,40 @@
+div {
+	margin: 0 0 30px 0;
+	padding: 10px;
+	outline: 3px solid #DDD;
+}
+
+h1 {
+	font-size: 18px;
+}
+
+input, button {
+	display: block;
+	margin: 10px;
+}
+
+input[type=checkbox] {
+	display: inline;
+}
+
+.odd {
+	background: rgb(156, 156, 218);
+}
+.even {
+	background: rgb(215, 160, 160);
+}
+
+input.ng-invalid {
+	border: 3px solid red;
+}
+input.ng-valid {
+	border: 3px solid green;
+}
+.err, .red {
+	color: red;
+}
+
+.animateView.ng-enter, .animateView.ng-leave {
+	transition: 2s linear all;
+	-webkit-transition: 2s linear all;
+}
