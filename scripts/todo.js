@@ -2,8 +2,8 @@ angular.module('todoApp', [])
 	.controller('TodoController', ['$scope', function ($scope) {
 		
 		$scope.todos = [
-			{text: 'learn angular', done: true},
-			{text: 'build an angular app', done: false}
+			{id: 1, text: 'learn angular', done: true},
+			{id: 2, text: 'build an angular app', done: false}
 		];
 
 		$scope.addTodo = function(){

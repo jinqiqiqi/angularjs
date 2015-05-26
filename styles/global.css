@@ -33,3 +33,8 @@ input.ng-valid {
 .err, .red {
 	color: red;
 }
+
+.animateView.ng-enter, .animateView.ng-leave {
+	transition: 2s linear all;
+	-webkit-transition: 2s linear all;
+}

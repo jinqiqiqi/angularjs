@@ -3,29 +3,48 @@
 	<head>
 		<script src="./scripts/angular/angular.min.js"></script>
 		<script src="./scripts/todo.js"></script>
-		<link rel="stylesheet" type="text/css" href="styles/todo.css">
+		<link rel="stylesheet" type="text/css" href="styles/bootstrap-3.3.4/dist/css/bootstrap.min.css">
+		<style>
+			.done-true {
+				text-decoration: line-through;
+				color: grey;
+			}
+		</style>
 	</head>
 	<body>
-		<h2>Todo</h2>
-		<div ng-controller="TodoController">
+		<div class="page-header">
+			<h1>Todo list</h1>
+		</div>
+		<div class="panel" ng-controller="TodoController">
 			<span>
 				{{remaining()}} of {{todos.length}} remaining
 			</span>
 			[ <a href="" ng-click="archive()">archive</a> ]
 
-			<ul class="unstyled">
-				<li ng-repeat="todo in todos">
-					<span class="done-{{todo.done}}">
-						<label>
-						<input type="checkbox" ng-model="todo.done">{{todo.text}}
-						</label>
-					</span>
-				</li>
-			</ul>
-			<form action="" ng-submit="addTodo()">
-				<input type="text" ng-model="todoText" size="30" placeholder="add new todo here" />
-				<input type="submit" class="btn-primary" value="add" />
-			</form>
+			<table class="table table-striped">
+				<thead>
+					<tr>
+						<td>Done</td>
+						<td>Description</td>
+					</tr>
+				</thead>
+				<tbody>
+					<tr ng-repeat="todo in todos">
+						<td>
+							<input id="todo_item_{{todo.text}}" type="checkbox" ng-model="todo.done">
+						</td>
+						<td>
+							<label for="todo_item_{{todo.text}}" class="done-{{todo.done}}">{{todo.text}}</label>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+			<div class="input-group">
+				<input type="text" ng-model="todoText" size="30" placeholder="add new todo here" class="form-control" />
+				<span class="input-group-btn">
+					<input type="button" ng-click="addTodo()" class="btn btn-default" value="add" />
+				</span>
+			</div>
 		</div>
 	</body>
 </html>
