@@ -16,6 +16,8 @@ angular.module('todoApp', [])
 		
 		var todoUrl = "./todo.json.php";
 		todoService.events(todoUrl, 'get').success(function(data, status) {
+
+			data = angular.fromJson(data);
 			$scope.todos = data;
 		});
 
