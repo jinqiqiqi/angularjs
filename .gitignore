@@ -1,2 +1,5 @@
 *.komodoproject
 nbproject/
+sportsstore/.dpd/pids/mongod
+sportsstore/data/local.0
+sportsstore/data/mongod.lock
