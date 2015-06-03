@@ -1,22 +1,16 @@
 var app = angular.module("sportsStore", ["customFilters"]);
-app.controller('sportsStoreCtrl', ['$scope', function($scope){
-	$scope.data = {
-		products: [
-			{
-				name: "Product #1", description: "A product #1", category: "category #1", price: 100
-			},
-			{
-				name: "Product #3", description: "A product #3", category: "category #3", price: 100
-			},
-			{
-				name: "Product #2", description: "A product #2", category: "category #2", price: 100
-			},
-			{
-				name: "Product #2", description: "A product #2", category: "category #2", price: 100
-			},
-			{
-				name: "Product #4", description: "A product #4", category: "category #3", price: 100
-			},
-		]
-	};
+app
+.constant('dataUrl', "http://localhost:2403/products")
+.controller('sportsStoreCtrl', ['$scope', '$http', 'dataUrl', function($scope, $http, dataUrl){
+	$scope.data = {};
+
+	$http.get(dataUrl)
+		.success(function(data){
+			$scope.data.products = data;
+		})
+		.error(function(error, status) {
+			$scope.data.error = error;
+			$scope.data.status = status;
+		})
+
 }]);
