@@ -1,7 +1,7 @@
 app
 .constant('productListActiveClass', 'btn-primary')
 .constant('productListPageCount', 3)
-.controller('productListCtrl', ['$scope', '$filter', 'productListActiveClass', 'productListPageCount', function($scope, $filter, productListActiveClass, productListPageCount){
+.controller('productListCtrl', ['$scope', '$filter', 'productListActiveClass', 'productListPageCount', function($scope, $filter, productListActiveClass, productListPageCount, cart){
 
 	var selectedCategory = null;
 	$scope.selectedPage = 1;

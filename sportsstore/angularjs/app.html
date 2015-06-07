@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html ng-app="sportsStore">
 <head>
-<meta http-equiv="content-type" content="text/html;charset=utf-8">
-<meta id="viewport" name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0,user-scalable=no" />
-<meta content="yes" name="apple-mobile-web-app-capable" />
+	<meta http-equiv="Content-type" content="text/html; charset=utf-8">
+	<meta id="viewport" name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0,user-scalable=no">
+	<meta content="yes" name="apple-mobile-web-app-capable">
 	<title>Sports Store</title>
 	<script src="angular.min.js" type="text/javascript"></script>
 	<script src="ngmodules/angular-route.min.js" type="text/javascript"></script>
@@ -12,35 +12,17 @@
 	<script src="controllers/sportsStore.js" type="text/javascript"></script>
 	<script src="controllers/productListControllers.js" type="text/javascript"></script>
 	<script src="filters/customFilters.js" type="text/javascript"></script>
+	<script src="components/cart/cart.js" type="text/javascript"></script>
 </head>
 <body ng-controller="sportsStoreCtrl">
 	<div class="navbar navbar-inverse">
 		<a href="#" class="navbar-brand">SPORTS STORE</a>
+		<!-- <span cart-summary /> -->
 	</div>
 	<div class="alert alert-danger" ng-show="data.error">
 		Error ({{data.error.status}}). The product data was not loaded.
 		<a href="/app.html" class="alert-link">Click here to try again.</a>
 	</div>
-	<div class="panel panel-default row" ng-controller="productListCtrl" ng-hide="data.error">
-		<div class="col-xs-3">
-			<a ng-click="selectCategory()" class="btn btn-block btn-default btn-lg">Home</a>
-			<a ng-repeat="item in data.products | orderBy:'category' | unique:'category'" title="{{item.category}}" ng-click="selectCategory(item)" class="btn btn-block btn-default btn-lg" ng-class="getCategoryClass(item);">{{item}}</a>
-		</div>
-
-		<div class="col-xs-8">
-			<div class="well" ng-repeat="item in data.products | filter:categoryFilterFn | range:selectedPage:pageSize">
-				<h3>
-					<strong>{{item.name}}</strong>
-					<span class="pull-right label label-primary">{{item.price|currency}}</span>
-				</h3>
-				<span class="lead">{{item.description}}</span>
-			</div>
-			<div class="pull-right btn-group">
-				<a ng-repeat="page in data.products | filter:categoryFilterFn | pageCount:pageSize" ng-click="selectPage($index + 1)" ng-class="getPageClass($index + 1)" class="btn btn-default">
-				{{$index + 1}}
-				</a>
-			</div>
-		</div>
-	</div>
+	<ng-include src="'views/productList.html'"></ng-include>
 </body>
 </html>
