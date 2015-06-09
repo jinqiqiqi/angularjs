@@ -1,5 +1,5 @@
 angular.module("cart", [])
-.factory('cart', ['', function(){
+.factory('cart', [function(){
 	var cartData = [];
 	return {
 		addProduct: function(id, name, price) {
