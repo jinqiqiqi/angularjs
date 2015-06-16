@@ -1,4 +1,4 @@
-var app = angular.module("sportsStoreAdmin", ["ngRoute"]);
+var app = angular.module("sportsStoreAdmin", ["ngRoute", "ngResource"]);
 app
 .constant('authUrl', "http://192.168.1.7:5500/users/login")
 .constant('ordersUrl', "http://192.168.1.7:5500/orders")
