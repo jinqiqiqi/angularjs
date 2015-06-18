@@ -1,7 +1,7 @@
 app.controller('cartSummaryController', ['$scope', 'cart', function($scope, cart){
 	
 	$scope.cartData = cart.getProducts();
-console.log("cartData = ", $scope.cartData, cart);
+// console.log("cartData = ", $scope.cartData, cart);
 	$scope.total = function() {
 		var total = 0;
 		for (var i = 0; i < $scope.cartData.length; i++) {
