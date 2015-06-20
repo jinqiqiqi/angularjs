@@ -17,6 +17,7 @@ app.constant('productUrl', "http://192.168.1.7:5500/products/")
 	}
 
 	$scope.createProduct = function(product) {
+		console.log(product);
 		new $scope.productsResource(product).$save().then(function(newProduct) {
 			$scope.products.push(newProduct);
 			$scope.editedProduct = null;
