@@ -42,12 +42,17 @@
 					</tr>
 				</thead>
 				<tbody>
-					<tr ng-repeat="todo in todos | checkedItems:showComplete | orderBy: 'text'">
+					<tr ng-repeat="todo in todos | checkedItems:showComplete | orderBy: 'text' as results">
 						<td>
 							<input id="todo_item_{{todo.text}}" type="checkbox" ng-model="todo.done">
 						</td>
 						<td>
 							<label for="todo_item_{{todo.text}}" class="done-{{todo.done}}">{{todo.text}}</label>
+						</td>
+					</tr>
+					<tr class="animate-repeat" ng-if="results.length == 0">
+						<td colspan="2">
+							<strong class="center">No results found...</strong>
 						</td>
 					</tr>
 				</tbody>
