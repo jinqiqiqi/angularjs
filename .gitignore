@@ -2,3 +2,4 @@
 nbproject/*
 sportsstore/.dpd/*
 sportsstore/data/*
+*.DS_Store
