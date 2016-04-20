@@ -1,4 +1,0 @@
-angularjs
-=========
-
-something with angularjs
